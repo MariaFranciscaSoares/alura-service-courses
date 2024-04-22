@@ -2,6 +2,7 @@ package br.com.alura.entity;
 
 import br.com.alura.enums.Role;
 import br.com.alura.vo.UserRegistrationVO;
+import br.com.alura.vo.UserVO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,11 +43,18 @@ public class User {
     private LocalDate creationDate;
 
     public User(UserRegistrationVO userRegistrationVO) {
+        this.id = userRegistrationVO.getId();
         this.name = userRegistrationVO.getName();
         this.username = userRegistrationVO.getUsername();
         this.email = userRegistrationVO.getEmail();
         this.password = userRegistrationVO.getPassword();
         this.role = userRegistrationVO.getRole();
         this.creationDate = LocalDate.now();
+    }
+
+    public User(UserVO userVO) {
+        this.name = userVO.getName();
+        this.email = userVO.getEmail();
+        this.role = userVO.getRole();
     }
 }

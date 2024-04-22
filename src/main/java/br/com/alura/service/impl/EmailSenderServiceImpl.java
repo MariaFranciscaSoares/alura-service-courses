@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailSenderServiceImpl implements EmailSenderService {
 
-    public static final String AVALIACAO_DE_CURSO = "Avaliação de Curso: ";
+    public static final String EVALUATION = "Course Evaluation: ";
 
     @Override
     public void send(RatingVO ratingVO) {
@@ -18,15 +18,15 @@ public class EmailSenderServiceImpl implements EmailSenderService {
         System.out.printf("""
                 Subject: %s
                 Body: %s
-                %n""", AVALIACAO_DE_CURSO, body);
+                %n""", EVALUATION, body);
     }
 
     private String generateNotificationEmail(String instructorName, String courseName, String reason) {
-        return "Olá " + instructorName + ",\n\n" +
-                "Gostaríamos de informá-lo sobre uma avaliação recente do curso " + courseName + " que pode precisar da sua atenção.\n\n" +
-                "Um aluno avaliou o curso com uma nota abaixo de 6 e compartilhou o seguinte motivo: " + reason + ".\n\n" +
-                "Por favor, considere revisar o conteúdo do curso e assegurar que os alunos estão recebendo a melhor experiência possível.\n\n" +
-                "Atenciosamente,\n" +
-                "Equipe Alura";
+        return "Hello " + instructorName + ",\n\n" +
+                "We would like to inform you about a recent evaluation of the course " + courseName + " that may require your attention.\n\n" +
+                "A student rated the course below 6 and shared the following reason: " + reason + ".\n\n" +
+                "Please consider reviewing the course content and ensuring that students are receiving the best possible experience.\n\n" +
+                "Sincerely,\n" +
+                "Alura Team";
     }
 }

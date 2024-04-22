@@ -60,7 +60,13 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public GetCourseResponse getCoursesByStatus(CourseStatus status, Pageable pageable) {
         try {
-            Page<Course> coursesPage = courseRepository.findByStatus(status, pageable);
+            Page<Course> coursesPage;
+
+            if (CommonsUtil.isNullOrEmpty(status)) {
+                coursesPage = courseRepository.findAll(pageable);
+            } else {
+                coursesPage = courseRepository.findByStatus(status, pageable);
+            }
 
             if (CommonsUtil.isNullOrEmpty(coursesPage.getContent())) {
                 return new GetCourseResponse(null, "No courses found.");

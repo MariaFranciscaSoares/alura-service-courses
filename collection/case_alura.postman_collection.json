@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "314ebabf-612d-4d4c-8387-ce1529fd791e",
+		"name": "case_alura",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22926756",
+		"_collection_link": "https://interstellar-zodiac-156046.postman.co/workspace/Team-Workspace~c3397832-0352-4aeb-89a4-5ccf41a43da8/collection/22926756-314ebabf-612d-4d4c-8387-ce1529fd791e?action=share&source=collection_link&creator=22926756"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "/{username}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alura/users/johndoe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"users",
+								"johndoe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"username\": \"johndoe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"INSTRUCTOR\",\r\n    \"creationDate\": \"2022-04-22\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alura/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "/ratings/{courseCode}",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"name\": \"Maria Soares\",\r\n    \"email\": \"mary@example.com\",\r\n    \"role\": \"STUDENT\"\r\n  },\r\n  \"course\": {\r\n    \"name\": \"Introduction to Java Programming\",\r\n    \"code\": \"java\",\r\n    \"instructor\": {\r\n      \"id\": 1,\r\n      \"name\": \"Maria Soares\",\r\n      \"username\": \"marysoares\",\r\n      \"email\": \"mary@example.com\",\r\n      \"password\": \"password123\",\r\n      \"role\": \"INSTRUCTOR\",\r\n      \"creationDate\": \"2024-04-21\"\r\n    },\r\n    \"description\": \"This course covers the basics of Java programming language.\",\r\n    \"status\": \"ATIVO\",\r\n    \"creationDate\": \"2024-04-21\",\r\n    \"inactivationDate\": null\r\n  },\r\n  \"score\": 4,\r\n  \"comment\": \"This course needs more exercises.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alura/courses/ratings/java-teste",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"courses",
+								"ratings",
+								"java-teste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Introduction to Spring Framework\",\r\n  \"code\": \"spring\",\r\n  \"instructor\": {\r\n    \"id\": 3,\r\n    \"name\": \"Paulo\",\r\n    \"username\": \"paulosantos\",\r\n    \"email\": \"paulosantos@example.com\",\r\n    \"password\": \"password\",\r\n    \"role\": \"INSTRUCTOR\"\r\n  },\r\n  \"description\": \"This course covers the basics of Spring Framework.\",\r\n  \"status\": \"ATIVO\",\r\n  \"creationDate\": \"2024-04-22\",\r\n  \"inactivationDate\": null\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alura/courses/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"courses",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/ratings/{courseCode}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alura/courses/ratings/java-teste",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"courses",
+								"ratings",
+								"java-teste"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{status} Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alura/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deactivate/{code}",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alura/courses/deactivate/spring",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"courses",
+								"deactivate",
+								"spring"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "enrollment",
+			"item": [
+				{
+					"name": "/alura/enrollment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"id\": 1,\r\n    \"name\": \"Maria Soares\",\r\n    \"username\": \"marysoares\",\r\n    \"email\": \"mary@example.com\",\r\n    \"password\": \"password123\",\r\n    \"role\": \"STUDENT\",\r\n    \"creationDate\": \"2024-04-21\"\r\n  },\r\n  \"course\": {\r\n    \"name\": \"Introduction to Maven\",\r\n    \"code\": \"maven\",\r\n    \"instructor\": {\r\n      \"id\": 3,\r\n      \"name\": \"Paulo\",\r\n      \"username\": \"paulosantos\",\r\n      \"email\": \"paulosantos@example.com\",\r\n      \"password\": \"password\",\r\n      \"role\": \"INSTRUCTOR\"\r\n    },\r\n    \"description\": \"This course covers the basics of Spring Framework.\",\r\n    \"status\": \"ATIVO\",\r\n    \"creationDate\": \"2024-04-21\",\r\n    \"inactivationDate\": null\r\n  },\r\n  \"enrollmentDate\": \"2024-04-22\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alura/enrollment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alura",
+								"enrollment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

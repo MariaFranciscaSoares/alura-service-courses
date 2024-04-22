@@ -1,7 +1,7 @@
 package br.com.alura.controller;
 
 import br.com.alura.record.GetUserResponse;
-import br.com.alura.record.RegisterUserResponse;
+import br.com.alura.record.RegisterResponse;
 import br.com.alura.service.UserService;
 import br.com.alura.vo.UserRegistrationVO;
 import org.springframework.http.HttpStatus;
@@ -19,9 +19,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterUserResponse> registerUser(@RequestBody UserRegistrationVO userRegistrationVO) {
+    public ResponseEntity<RegisterResponse> registerUser(@RequestBody UserRegistrationVO userRegistrationVO) {
         userService.registerUser(userRegistrationVO);
-        RegisterUserResponse response = new RegisterUserResponse("User registered successfully");
+        RegisterResponse response = new RegisterResponse("User registered successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

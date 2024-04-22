@@ -8,15 +8,13 @@ import br.com.alura.service.UserService;
 import br.com.alura.util.CommonsUtil;
 import br.com.alura.vo.UserRegistrationVO;
 import br.com.alura.vo.UserVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
-
-    private final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     private final UserRepository userRepository;
 
@@ -30,12 +28,12 @@ public class UserServiceImpl implements UserService {
             performValidations(userRegistrationVO);
             User user = new User(userRegistrationVO);
             userRepository.save(user);
-            LOGGER.info("User registered successfully");
+            log.info("User registered successfully");
         } catch (DataIntegrityViolationException e) {
-            LOGGER.error("Data integrity error: the operation failed due to a data integrity constraint violation.", e);
+            log.error("Data integrity error: the operation failed due to a data integrity constraint violation.", e);
             throw new AluraException(e.getMessage(), e);
         } catch (Exception e) {
-            LOGGER.error("Failed to register user", e);
+            log.error("Failed to register user", e);
             throw new AluraException(e.getMessage(), e);
         }
     }
@@ -52,7 +50,7 @@ public class UserServiceImpl implements UserService {
             UserVO userVO = new UserVO(user.getName(), user.getEmail(), user.getRole());
             return new GetUserResponse(userVO, "Query executed successfully");
         } catch (Exception e) {
-            LOGGER.error("Failed to fetch user data.", e);
+            log.error("Failed to fetch user data.", e);
             throw new AluraException(e.getMessage(), e);
         }
     }

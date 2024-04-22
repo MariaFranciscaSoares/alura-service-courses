@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class CommonsUtil {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    private static final Pattern CODE_PATTERN = Pattern.compile("^[a-zA-Z]+(-[a-zA-Z]+)*$");
 
     public static boolean isNullOrEmpty(Object obj) {
         if (obj == null) {
@@ -43,5 +44,9 @@ public class CommonsUtil {
 
     public static boolean isValidEmail(String email) {
         return EMAIL_PATTERN.matcher(email).matches();
+    }
+
+    public static boolean isValidCourseCode(String code) {
+        return CODE_PATTERN.matcher(code).matches();
     }
 }

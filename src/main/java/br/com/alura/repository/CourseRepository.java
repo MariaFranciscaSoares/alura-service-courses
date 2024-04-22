@@ -20,6 +20,6 @@ public interface CourseRepository extends JpaRepository<Course, String> {
 
     Optional<Course> findByCode(String code);
 
-    @Query(value = "SELECT e.course FROM Enrollment e GROUP BY e.course HAVING COUNT(e.course) > 4", nativeQuery = true)
+    @Query(value = "SELECT c.* FROM course c WHERE (SELECT COUNT(*) FROM enrollment e WHERE e.course_id = c.code) > 4", nativeQuery = true)
     List<Course> findCoursesWithEnoughEnrollments();
 }
